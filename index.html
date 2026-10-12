@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brotalia · Tu pueblo, tu granja, tus amigos</title>
+<meta name="description" content="Brotalia es un juego gratis de granja y pueblo: planta, fabrica en tus máquinas, entrega pedidos y visita los pueblos de tus amigos.">
+<meta property="og:title" content="Brotalia · Tu pueblo, tu granja, tus amigos">
+<meta property="og:description" content="Planta, fabrica, entrega pedidos y visita los pueblos de tus amigos. Gratis en el navegador y en Android.">
+<meta property="og:image" content="https://davurpi.github.io/brotalia/brotalia-web/compartir.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="brotalia-web/icono.svg" type="image/svg+xml">
+<style>
+  :root {
+    --crema: #fff5d6; --papel: #fffaf0; --tinta: #4d3017; --suave: #7a5a3a; --borde: #6b4521;
+    --verde: #5cb34c; --verde-osc: #296b24; --hoja: #7ccf4a; --sol: #ffde8c; --cielo: #4da8d9;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--hoja); color: var(--tinta);
+    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif; font-size: 18px; line-height: 1.55;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  .ancho { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  /* Cabecera */
+  header.portada {
+    background: linear-gradient(#4da8d9 0%, #8fd0ee 46%, #7ccf4a 46%, #6cc03e 100%);
+    padding: 28px 0 44px; text-align: center;
+  }
+  .logo { display: inline-flex; align-items: center; gap: 14px; }
+  .logo img { width: 84px; height: 84px; border-radius: 22px; border: 4px solid var(--borde); box-shadow: 0 6px 0 rgba(60, 35, 10, .35); }
+  h1 {
+    margin: 0; font-size: clamp(46px, 9vw, 84px); line-height: 1; color: #fff; letter-spacing: 1px;
+    text-shadow: 0 4px 0 var(--verde-osc), 3px 0 0 var(--verde-osc), -3px 0 0 var(--verde-osc), 0 -3px 0 var(--verde-osc), 0 8px 14px rgba(0, 0, 0, .25);
+  }
+  .lema { margin: 14px 0 22px; font-size: clamp(20px, 3.2vw, 28px); font-weight: bold; color: #fff; text-shadow: 0 2px 0 rgba(30, 80, 110, .6); }
+  .foto-grande { border: 5px solid var(--borde); border-radius: 22px; box-shadow: 0 10px 0 rgba(60, 35, 10, .3); margin: 26px auto 0; overflow: hidden; background: #fff; }
+
+  /* Botones */
+  .boton {
+    display: inline-block; text-decoration: none; font-weight: bold; font-size: 22px; color: #1f4d1b;
+    background: #a6e070; border: 4px solid var(--verde-osc); border-radius: 18px; padding: 14px 30px;
+    box-shadow: 0 6px 0 var(--verde-osc); transition: transform .08s, box-shadow .08s;
+  }
+  .boton:hover { background: #b9ec86; }
+  .boton:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--verde-osc); }
+  .boton small { display: block; font-size: 14px; font-weight: normal; }
+  .boton.gris { background: #e6dccb; color: var(--suave); border-color: #9a8770; box-shadow: 0 6px 0 #9a8770; cursor: default; }
+  .botones { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .aviso { display: inline-block; margin-top: 18px; background: rgba(255, 255, 255, .85); border-radius: 999px; padding: 4px 16px; font-size: 15px; }
+
+  /* Secciones */
+  section { padding: 44px 0; }
+  section.clara { background: var(--crema); border-top: 5px solid var(--borde); border-bottom: 5px solid var(--borde); }
+  h2 {
+    display: table; margin: 0 auto 28px; padding: 8px 34px; font-size: clamp(26px, 4.4vw, 36px); color: #fff;
+    background: var(--verde); border: 4px solid var(--verde-osc); border-radius: 18px; box-shadow: 0 5px 0 var(--verde-osc);
+    text-shadow: 0 2px 0 var(--verde-osc);
+  }
+  .rejilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 22px; }
+  .tarjeta { background: var(--papel); border: 4px solid var(--borde); border-radius: 20px; overflow: hidden; box-shadow: 0 6px 0 rgba(60, 35, 10, .28); }
+  .tarjeta img { border-bottom: 4px solid var(--borde); aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  .tarjeta div { padding: 14px 18px 18px; }
+  .tarjeta h3 { margin: 0 0 6px; font-size: 22px; }
+  .tarjeta p { margin: 0; color: var(--suave); }
+
+  ol.pasos { list-style: none; padding: 0; margin: 0 auto; max-width: 760px; counter-reset: paso; }
+  ol.pasos li { counter-increment: paso; background: var(--papel); border: 4px solid var(--borde); border-radius: 18px; padding: 14px 18px 14px 74px; margin-bottom: 14px; position: relative; }
+  ol.pasos li::before {
+    content: counter(paso); position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+    width: 42px; height: 42px; border-radius: 50%; background: var(--sol); border: 4px solid var(--borde);
+    display: grid; place-items: center; font-weight: bold; font-size: 20px;
+  }
+  .nota { max-width: 760px; margin: 0 auto; background: var(--papel); border: 4px solid var(--borde); border-radius: 18px; padding: 18px 22px; }
+  .nota ul { margin: 8px 0 0; padding-left: 22px; }
+  .centro { text-align: center; }
+
+  footer { background: #3f7d2f; color: #eaffd9; text-align: center; padding: 26px 16px 34px; font-size: 16px; }
+  footer a { color: #fff; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="ancho">
+    <div class="logo">
+      <img src="brotalia-web/icono.svg" alt="">
+      <h1>Brotalia</h1>
+    </div>
+    <p class="lema">Tu pueblo, tu granja, tus amigos</p>
+    <div class="botones">
+      <a class="boton" href="jugar/" style="font-size:26px;padding:16px 38px">▶ Jugar ahora<small>en el navegador · PC, iPhone y Android</small></a>
+    </div>
+    <div class="botones" style="margin-top:16px">
+      <a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download style="background:#c9ecff;border-color:#1d5f86;box-shadow:0 6px 0 #1d5f86;color:#123f5a">Descargar para Android<small>APK · 56 MB · gratis</small></a>
+      <a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Windows.zip" download style="background:#e3dbff;border-color:#4b3a8f;box-shadow:0 6px 0 #4b3a8f;color:#2c2160">Descargar para Windows<small>ZIP · 36 MB · gratis</small></a>
+    </div>
+    <span class="aviso">Versión de prueba 0.3 · se irá actualizando</span>
+    <div class="foto-grande"><img src="brotalia-web/pueblo.jpg" alt="Un pueblo de Brotalia con casas, fábricas, campos y vecinos paseando" width="1280" height="720"></div>
+  </div>
+</header>
+
+<section class="clara">
+  <div class="ancho">
+    <h2>¿Qué se hace en Brotalia?</h2>
+    <div class="rejilla">
+      <article class="tarjeta">
+        <img src="brotalia-web/semillas.jpg" alt="Panel de semillas con doce cultivos" loading="lazy">
+        <div><h3>Planta y cosecha</h3><p>Doce cultivos, del trigo al cacao. Crecen de verdad con el tiempo, también cuando no estás jugando.</p></div>
+      </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/panaderia.jpg" alt="La panadería por dentro, con su horno encendido" loading="lazy">
+        <div><h3>Pon tus máquinas en marcha</h3><p>Molino, panadería, telar, chocolatería… Cada fábrica tiene su máquina y hace productos con lo que cosechas.</p></div>
+      </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/pedidos.jpg" alt="Tablón con cuatro pedidos de los vecinos" loading="lazy">
+        <div><h3>Atiende a los vecinos</h3><p>La abuela Rosa, el bar de la plaza, la escuela… Entrégales lo que piden y gana monedas y experiencia.</p></div>
+      </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/construir.jpg" alt="Menú de construcción con fábricas y corrales" loading="lazy">
+        <div><h3>Construye y decora</h3><p>Coloca edificios, caminos, fuentes y estanques a tu gusto. Tala bosque para tener más sitio.</p></div>
+      </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/misiones.jpg" alt="Tres misiones del día con sus premios" loading="lazy">
+        <div><h3>Misiones y eventos</h3><p>Tres misiones nuevas cada día y un evento semanal con clasificación entre pueblos.</p></div>
+      </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/pueblo.jpg" alt="Vecinos paseando por el pueblo" loading="lazy">
+        <div><h3>Juega con tus amigos</h3><p>Visita sus pueblos, mándales regalos, pídeles ayuda y compra y vende en el mercado.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="instalar">
+  <div class="ancho">
+    <h2>Cómo se instala en Android</h2>
+    <ol class="pasos">
+      <li>Pulsa <b>Descargar para Android</b> desde el móvil o la tablet.</li>
+      <li>Abre el archivo <b>brotalia.apk</b> cuando termine de bajar. Si el móvil pregunta, permite instalar aplicaciones desde el navegador.</li>
+      <li>Abre Brotalia, dile a Lola cómo te llamas y sigue sus pasos. Para jugar con amigos, crea tu cuenta con el botón <b>Amigos</b>.</li>
+    </ol>
+    <p class="centro" style="margin-top:22px"><a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download>Descargar para Android<small>APK · 56 MB · gratis</small></a></p>
+    <h2 style="margin-top:40px">En iPhone, iPad y ordenador</h2>
+    <ol class="pasos">
+      <li>Pulsa <b>Jugar ahora</b>: el juego se abre en el navegador, sin instalar nada. La primera vez tarda un poco en cargar.</li>
+      <li>En iPhone o iPad, ábrelo con <b>Safari</b>, pulsa <b>Compartir</b> y luego <b>Añadir a pantalla de inicio</b> para tenerlo como una app a pantalla completa.</li>
+      <li>En Windows también puedes <b>descargar el juego</b>: descomprime el .zip y abre <b>Brotalia.exe</b>. Si Windows avisa, pulsa «Más información» y «Ejecutar de todas formas».</li>
+      <li>La partida se guarda en ese navegador. Crea tu cuenta con el botón <b>Amigos</b> para no perderla y seguirla en otro dispositivo.</li>
+    </ol>
+    <p class="centro" style="margin-top:22px"><a class="boton" href="jugar/">▶ Jugar ahora<small>en el navegador</small></a></p>
+  </div>
+</section>
+
+<section class="clara">
+  <div class="ancho">
+    <h2>Para madres y padres</h2>
+    <div class="nota">
+      Brotalia es un juego tranquilo de granja, sin violencia y sin anuncios.
+      <ul>
+        <li><b>Es gratis.</b> La tienda del juego está en modo prueba: no cobra dinero de verdad ni pide tarjeta.</li>
+        <li><b>La cuenta es opcional.</b> Solo hace falta para guardar la partida en la nube y jugar con amigos. Pide un nombre de pueblo y una contraseña, que se guarda protegida; no pide correo, teléfono ni datos personales.</li>
+        <li><b>Sin chat.</b> Entre jugadores solo se pueden visitar pueblos, dar «me gusta», mandar productos del juego y comprar en el mercado.</li>
+        <li><b>Es una versión de prueba.</b> Puede tener fallos y la partida podría reiniciarse durante las pruebas.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Brotalia es un juego de <b>Àlex Juegos</b>. Todo el dibujo y la música están hechos para este juego.</p>
+  <p>Más juegos: <a href="https://fenix.alexjuegos.com/">Fénix FC</a> · <a href="https://davurpi.github.io/la-odisea/">La Odisea</a></p>
+</footer>
+
+</body>
+</html>
