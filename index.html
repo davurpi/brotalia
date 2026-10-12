@@ -6,7 +6,7 @@
 <title>Brotalia · Tu pueblo, tu granja, tus amigos</title>
 <meta name="description" content="Brotalia es un juego gratis de granja y pueblo: planta, fabrica en tus máquinas, entrega pedidos y visita los pueblos de tus amigos.">
 <meta property="og:title" content="Brotalia · Tu pueblo, tu granja, tus amigos">
-<meta property="og:description" content="Planta, fabrica, entrega pedidos y visita los pueblos de tus amigos. Gratis en el navegador y en Android.">
+<meta property="og:description" content="Planta, fabrica, entrega pedidos y visita los pueblos de tus amigos. Gratis en el navegador, Android, Windows y Mac.">
 <meta property="og:image" content="https://davurpi.github.io/brotalia/brotalia-web/compartir.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="brotalia-web/icono.svg" type="image/svg+xml">
@@ -16,6 +16,7 @@
     --verde: #5cb34c; --verde-osc: #296b24; --hoja: #7ccf4a; --sol: #ffde8c; --cielo: #4da8d9;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--hoja); color: var(--tinta);
@@ -91,11 +92,13 @@
     </div>
     <p class="lema">Tu pueblo, tu granja, tus amigos</p>
     <div class="botones">
-      <a class="boton" href="jugar/" style="font-size:26px;padding:16px 38px">▶ Jugar ahora<small>en el navegador · PC, iPhone y Android</small></a>
+      <a class="boton" href="jugar/" style="font-size:26px;padding:16px 38px">▶ Jugar ahora<small id="donde">en el navegador · PC, Mac, iPhone y Android</small></a>
     </div>
-    <div class="botones" style="margin-top:16px">
-      <a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download style="background:#c9ecff;border-color:#1d5f86;box-shadow:0 6px 0 #1d5f86;color:#123f5a">Descargar para Android<small>APK · 56 MB · gratis</small></a>
-      <a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Windows.zip" download style="background:#e3dbff;border-color:#4b3a8f;box-shadow:0 6px 0 #4b3a8f;color:#2c2160">Descargar para Windows<small>ZIP · 36 MB · gratis</small></a>
+    <p class="aviso" id="para-ti" hidden style="margin:16px 0 0;font-weight:bold"></p>
+    <div class="botones" id="descargas" style="margin-top:16px">
+      <a class="boton" data-so="mac" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Mac.zip" download style="background:#ffe3c2;border-color:#8a4b12;box-shadow:0 6px 0 #8a4b12;color:#5a2f08">Descargar para Mac<small>ZIP · 63 MB · gratis</small></a>
+      <a class="boton" data-so="android" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download style="background:#c9ecff;border-color:#1d5f86;box-shadow:0 6px 0 #1d5f86;color:#123f5a">Descargar para Android<small>APK · 56 MB · gratis</small></a>
+      <a class="boton" data-so="windows" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Windows.zip" download style="background:#e3dbff;border-color:#4b3a8f;box-shadow:0 6px 0 #4b3a8f;color:#2c2160">Descargar para Windows<small>ZIP · 36 MB · gratis</small></a>
     </div>
     <span class="aviso">Versión de prueba 0.3 · se irá actualizando</span>
     <div class="foto-grande"><img src="brotalia-web/pueblo.jpg" alt="Un pueblo de Brotalia con casas, fábricas, campos y vecinos paseando" width="1280" height="720"></div>
@@ -151,8 +154,46 @@
       <li>La partida se guarda en ese navegador. Crea tu cuenta con el botón <b>Amigos</b> para no perderla y seguirla en otro dispositivo.</li>
     </ol>
     <p class="centro" style="margin-top:22px"><a class="boton" href="jugar/">▶ Jugar ahora<small>en el navegador</small></a></p>
+
+    <h2 id="mac" style="margin-top:40px">En Mac</h2>
+    <ol class="pasos">
+      <li><b>Lo más rápido:</b> pulsa <b>Jugar ahora</b> y juega en Safari o Chrome, sin instalar nada.</li>
+      <li><b>Para tenerlo como una app:</b> con el juego abierto en Safari, ve al menú <b>Archivo → Añadir al Dock</b>. Aparece el icono de Brotalia en el Dock y se abre en su propia ventana.</li>
+      <li><b>Si prefieres descargarlo:</b> pulsa <b>Descargar para Mac</b>, abre el .zip y arrastra <b>Brotalia</b> a Aplicaciones.</li>
+      <li>La primera vez, el Mac avisará de que no conoce al desarrollador. Haz <b>clic derecho sobre Brotalia → Abrir → Abrir</b>. Si no te deja, ve a <b>Ajustes del Sistema → Privacidad y seguridad</b> y pulsa <b>Abrir igualmente</b>. Solo hay que hacerlo una vez.</li>
+    </ol>
+    <p class="centro" style="margin-top:22px"><a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Mac.zip" download style="background:#ffe3c2;border-color:#8a4b12;box-shadow:0 6px 0 #8a4b12;color:#5a2f08">Descargar para Mac<small>ZIP · 63 MB · gratis</small></a></p>
   </div>
 </section>
+
+<script>
+// Pone delante la descarga del aparato desde el que se mira la página.
+(function () {
+  var ua = navigator.userAgent || '';
+  var tactil = navigator.maxTouchPoints > 1;
+  var so = /Android/i.test(ua) ? 'android'
+    : (/iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && tactil)) ? 'ios'
+    : /Macintosh|Mac OS X/i.test(ua) ? 'mac'
+    : /Windows/i.test(ua) ? 'windows' : '';
+  var textos = {
+    mac: 'Estás en un Mac: juega ya en el navegador o descárgalo. <a href="#mac">Cómo se instala</a>',
+    windows: 'Estás en Windows: juega ya en el navegador o descárgalo.',
+    android: 'Estás en Android: juega ya en el navegador o instala la app. <a href="#instalar">Cómo se instala</a>',
+    ios: 'Estás en iPhone o iPad: pulsa Jugar ahora y luego «Añadir a pantalla de inicio».'
+  };
+  if (!textos[so]) return;
+  var aviso = document.getElementById('para-ti');
+  aviso.innerHTML = textos[so];
+  aviso.hidden = false;
+  var caja = document.getElementById('descargas');
+  var mio = caja.querySelector('[data-so="' + so + '"]');
+  if (mio) {
+    caja.insertBefore(mio, caja.firstChild);
+    mio.style.transform = 'scale(1.06)';
+  }
+  if (so === 'ios') caja.hidden = true;
+})();
+</script>
 
 <section class="clara">
   <div class="ancho">
