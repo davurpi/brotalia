@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Brotalia · Tu pueblo, tu granja, tus amigos</title>
-<meta name="description" content="Brotalia es un juego gratis de granja y pueblo: planta, fabrica en tus máquinas, entrega pedidos y visita los pueblos de tus amigos.">
+<meta name="description" content="Brotalia es un juego gratis de granja y pueblo: planta, fabrica, entrega pedidos, abre tres islas, excava en la mina, pesca y visita los pueblos de tus amigos.">
 <meta property="og:title" content="Brotalia · Tu pueblo, tu granja, tus amigos">
-<meta property="og:description" content="Planta, fabrica, entrega pedidos y visita los pueblos de tus amigos. Gratis en el navegador, Android, Windows y Mac.">
+<meta property="og:description" content="Planta, fabrica, abre tres islas, excava en la mina y visita los pueblos de tus amigos. Gratis en el navegador, Android, Windows y Mac.">
 <meta property="og:image" content="https://davurpi.github.io/brotalia/brotalia-web/compartir.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="brotalia-web/icono.svg" type="image/svg+xml">
@@ -67,6 +67,12 @@
   .tarjeta h3 { margin: 0 0 6px; font-size: 22px; }
   .tarjeta p { margin: 0; color: var(--suave); }
 
+  .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 8px; }
+  .galeria figure { margin: 0; background: var(--papel); border: 4px solid var(--borde); border-radius: 18px; overflow: hidden; box-shadow: 0 6px 0 rgba(60, 35, 10, .28); }
+  .galeria img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+  .galeria figcaption { padding: 8px 14px; font-weight: bold; text-align: center; }
+  .nuevo { display: inline-block; vertical-align: middle; margin-left: 6px; font-size: 13px; color: #fff; background: #e0533b; border-radius: 999px; padding: 1px 10px; }
+  .intro { max-width: 760px; margin: -8px auto 26px; text-align: center; font-size: 19px; }
   ol.pasos { list-style: none; padding: 0; margin: 0 auto; max-width: 760px; counter-reset: paso; }
   ol.pasos li { counter-increment: paso; background: var(--papel); border: 4px solid var(--borde); border-radius: 18px; padding: 14px 18px 14px 74px; margin-bottom: 14px; position: relative; }
   ol.pasos li::before {
@@ -101,38 +107,62 @@
       <a class="boton" data-so="windows" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Windows.zip" download style="background:#e3dbff;border-color:#4b3a8f;box-shadow:0 6px 0 #4b3a8f;color:#2c2160">Descargar para Windows<small>ZIP · 36 MB · gratis</small></a>
     </div>
     <span class="aviso">Versión de prueba 0.27 · se irá actualizando</span>
-    <div class="foto-grande"><img src="brotalia-web/pueblo.jpg" alt="Un pueblo de Brotalia con casas, fábricas, campos y vecinos paseando" width="1280" height="720"></div>
+    <div class="foto-grande"><img src="brotalia-web/pueblo.jpg" alt="Un pueblo de Brotalia con fábricas de colores, campos con la cosecha lista, una fuente y vecinos paseando" width="1280" height="720"></div>
   </div>
 </header>
 
 <section class="clara">
   <div class="ancho">
     <h2>¿Qué se hace en Brotalia?</h2>
+    <p class="intro">Un juego de granja y pueblo tranquilo y para todas las edades: construye y decora a tu gusto, con mar animado, cuatro estaciones y día y noche. Todo está dibujado para este juego.</p>
     <div class="rejilla">
       <article class="tarjeta">
-        <img src="brotalia-web/semillas.jpg" alt="Panel de semillas con doce cultivos" loading="lazy">
-        <div><h3>Planta y cosecha</h3><p>Quince cultivos, del trigo a la lavanda. Crecen de verdad con el tiempo, también cuando no estás jugando.</p></div>
+        <img src="brotalia-web/cosecha.jpg" alt="Campos con la cosecha lista y brillando" loading="lazy">
+        <div><h3>Planta y cosecha</h3><p>Veintiún cultivos, del trigo a la vainilla, y árboles frutales. Crecen de verdad con el tiempo, también cuando no juegas, y brillan cuando están listos.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/panaderia.jpg" alt="La panadería por dentro, con su horno encendido" loading="lazy">
-        <div><h3>Pon tus máquinas en marcha</h3><p>Molino, panadería, telar, chocolatería, cafetería… Cada fábrica tiene su máquina y hace productos con lo que cosechas.</p></div>
+        <img src="brotalia-web/panaderia.jpg" alt="La panadería por dentro, con su horno" loading="lazy">
+        <div><h3>Pon tus máquinas en marcha</h3><p>Panadería, quesería, telar, chocolatería, juguetería… Más de veinte fábricas, cada una con su máquina, que convierten lo que cosechas en productos.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/pedidos.jpg" alt="Tablón con cuatro pedidos de los vecinos" loading="lazy">
-        <div><h3>Atiende a los vecinos</h3><p>La abuela Rosa, el bar de la plaza, la escuela… Entrégales lo que piden y gana monedas y experiencia.</p></div>
+        <img src="brotalia-web/pedidos.jpg" alt="Tablón con los pedidos de los vecinos" loading="lazy">
+        <div><h3>Atiende a los vecinos</h3><p>Pedidos de los vecinos, un tren y un barco que llenar de mercancía, el mercadillo y pedidos relámpago que pagan el doble.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/construir.jpg" alt="Menú de construcción con fábricas y corrales" loading="lazy">
-        <div><h3>Construye y decora</h3><p>Coloca edificios, caminos, fuentes y estanques a tu gusto. El pueblo cambia con las estaciones y, cuando crezcas, un puente te lleva a una segunda isla.</p></div>
+        <img src="brotalia-web/tropical.jpg" alt="La isla tropical con palmeras y playa" loading="lazy">
+        <div><h3>Tres islas <span class="nuevo">Nuevo</span></h3><p>Construye puentes para abrir una segunda isla y una isla tropical con palmeras, plátanos, cocos y su propio bar.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/misiones.jpg" alt="Tres misiones del día con sus premios" loading="lazy">
-        <div><h3>Misiones y eventos</h3><p>Tres misiones nuevas cada día, logros que suben de grado, un tren que llenar de mercancía, una fiesta con minijuego cada día y un evento semanal con clasificación.</p></div>
+        <img src="brotalia-web/mina.jpg" alt="Minijuego de la mina con rocas que picar" loading="lazy">
+        <div><h3>Excava en la mina <span class="nuevo">Nuevo</span></h3><p>Pica la roca casilla a casilla y encuentra hierro, plata, oro, rubíes y cofres. Con ellos haces espadas y escudos; con tintes, peluches y juguetes.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/pueblo.jpg" alt="Vecinos paseando por el pueblo" loading="lazy">
-        <div><h3>Juega con tus amigos</h3><p>Visita sus pueblos, mándales regalos, compra y vende en el mercado y montad una cooperativa para competir juntos.</p></div>
+        <img src="brotalia-web/personaje.jpg" alt="Pantalla para personalizar el personaje" loading="lazy">
+        <div><h3>Tu personaje <span class="nuevo">Nuevo</span></h3><p>Elige sombrero, color de ropa, espada, escudo y mascota. Tu granjero pasea por el pueblo y tus amigos lo ven al visitarte.</p></div>
       </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/pesca.jpg" alt="Minijuego de pesca en el muelle" loading="lazy">
+        <div><h3>Pesca y colecciones <span class="nuevo">Nuevo</span></h3><p>Lanza la caña en el muelle, completa el álbum de peces y productos y busca tesoros enterrados por el pueblo.</p></div>
+      </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/misiones.jpg" alt="Misiones del día con sus premios" loading="lazy">
+        <div><h3>Misiones y eventos</h3><p>Misiones cada día, logros, una ruleta gratis, una historia con capítulos, fiestas y un evento semanal con clasificación.</p></div>
+      </article>
+      <article class="tarjeta">
+        <img src="brotalia-web/otono.jpg" alt="La segunda isla en otoño con sus fábricas" loading="lazy">
+        <div><h3>Juega con tus amigos</h3><p>Visita sus pueblos, mándales regalos, compra y vende en el mercado, vota en el concurso de pueblos y montad una cooperativa.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="ancho">
+    <h2>Cambia con las estaciones</h2>
+    <div class="galeria">
+      <figure><img src="brotalia-web/invierno.jpg" alt="El pueblo nevado en invierno" loading="lazy"><figcaption>Invierno con nieve</figcaption></figure>
+      <figure><img src="brotalia-web/otono.jpg" alt="La segunda isla con los árboles de otoño" loading="lazy"><figcaption>Otoño de colores</figcaption></figure>
+      <figure><img src="brotalia-web/noche.jpg" alt="El pueblo de noche con las farolas encendidas" loading="lazy"><figcaption>Y de noche, farolas</figcaption></figure>
     </div>
   </div>
 </section>
