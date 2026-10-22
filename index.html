@@ -9,7 +9,10 @@
 <meta property="og:description" content="Planta, fabrica, abre tres islas, excava en la mina y visita los pueblos de tus amigos. Gratis en el navegador, Android, Windows y Mac.">
 <meta property="og:image" content="https://brotalia.synkiria.com/brotalia-web/compartir.jpg">
 <meta property="og:type" content="website">
-<link rel="icon" href="brotalia-web/icono.svg" type="image/svg+xml">
+<link rel="icon" href="brotalia-web/icono.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --crema: #fff5d6; --papel: #fffaf0; --tinta: #4d3017; --suave: #7a5a3a; --borde: #6b4521;
@@ -20,16 +23,32 @@
   html { scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--hoja); color: var(--tinta);
-    font-family: "Trebuchet MS", "Segoe UI", Verdana, sans-serif; font-size: 18px; line-height: 1.55;
+    font-family: "Fredoka", "Trebuchet MS", "Segoe UI", Verdana, sans-serif; font-size: 18px; line-height: 1.55;
   }
   img { max-width: 100%; height: auto; display: block; }
   .ancho { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 
   /* Cabecera */
   header.portada {
+    position: relative; overflow: hidden;
     background: linear-gradient(#4da8d9 0%, #8fd0ee 46%, #7ccf4a 46%, #6cc03e 100%);
     padding: 28px 0 44px; text-align: center;
   }
+  header.portada .ancho { position: relative; z-index: 1; }
+  .nube { position: absolute; background: #fff; border-radius: 999px; opacity: .9; animation: nube 60s linear infinite; }
+  .nube::before, .nube::after { content: ""; position: absolute; background: #fff; border-radius: 50%; }
+  .nube::before { width: 55%; height: 160%; left: 14%; bottom: 20%; }
+  .nube::after { width: 40%; height: 130%; right: 12%; bottom: 25%; }
+  @keyframes nube { from { transform: translateX(-30vw); } to { transform: translateX(130vw); } }
+  @media (prefers-reduced-motion: reduce) { .nube { animation: none; } }
+  .sellos { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 0 0 22px; }
+  .sello { background: rgba(255, 255, 255, .92); color: var(--verde-osc); font-weight: 600; border: 3px solid var(--verde-osc); border-radius: 999px; padding: 4px 16px; font-size: 16px; box-shadow: 0 3px 0 rgba(41, 107, 36, .35); }
+  .tarjeta, .galeria figure { transition: transform .15s, box-shadow .15s; }
+  .tarjeta:hover, .galeria figure:hover { transform: translateY(-5px) rotate(-.4deg); box-shadow: 0 11px 0 rgba(60, 35, 10, .28); }
+  .novedades { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; max-width: 980px; margin: 0 auto; }
+  .novedad { background: var(--papel); border: 4px solid var(--borde); border-radius: 18px; padding: 14px 16px; box-shadow: 0 5px 0 rgba(60, 35, 10, .25); }
+  .novedad b { display: block; font-size: 20px; margin-bottom: 2px; }
+  .novedad span { color: var(--suave); font-size: 16px; }
   .logo { display: inline-flex; align-items: center; gap: 14px; }
   .logo img { width: 84px; height: 84px; border-radius: 22px; border: 4px solid var(--borde); box-shadow: 0 6px 0 rgba(60, 35, 10, .35); }
   h1 {
@@ -91,22 +110,26 @@
 <body>
 
 <header class="portada">
+  <div class="nube" style="top:40px;width:150px;height:40px;animation-duration:70s"></div>
+  <div class="nube" style="top:110px;width:110px;height:30px;animation-duration:50s;animation-delay:-25s"></div>
+  <div class="nube" style="top:70px;width:190px;height:48px;animation-duration:90s;animation-delay:-60s"></div>
   <div class="ancho">
     <div class="logo">
-      <img src="brotalia-web/icono.svg" alt="">
+      <img src="brotalia-web/icono.png" alt="">
       <h1>Brotalia</h1>
     </div>
     <p class="lema">Tu pueblo, tu granja, tus amigos</p>
+    <div class="sellos"><span class="sello">Gratis</span><span class="sello">Sin anuncios</span><span class="sello">Para todas las edades</span><span class="sello">Juega con amigos</span></div>
     <div class="botones">
       <a class="boton" href="jugar/" style="font-size:26px;padding:16px 38px">▶ Jugar ahora<small id="donde">en el navegador · PC, Mac, iPhone y Android</small></a>
     </div>
     <p class="aviso" id="para-ti" hidden style="margin:16px 0 0;font-weight:bold"></p>
     <div class="botones" id="descargas" style="margin-top:16px">
-      <a class="boton" data-so="mac" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Mac.zip" download style="background:#ffe3c2;border-color:#8a4b12;box-shadow:0 6px 0 #8a4b12;color:#5a2f08">Descargar para Mac<small>ZIP · 63 MB · gratis</small></a>
-      <a class="boton" data-so="android" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download style="background:#c9ecff;border-color:#1d5f86;box-shadow:0 6px 0 #1d5f86;color:#123f5a">Descargar para Android<small>APK · 56 MB · gratis</small></a>
-      <a class="boton" data-so="windows" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Windows.zip" download style="background:#e3dbff;border-color:#4b3a8f;box-shadow:0 6px 0 #4b3a8f;color:#2c2160">Descargar para Windows<small>ZIP · 36 MB · gratis</small></a>
+      <a class="boton" data-so="mac" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Mac.zip" download style="background:#ffe3c2;border-color:#8a4b12;box-shadow:0 6px 0 #8a4b12;color:#5a2f08">Descargar para Mac<small>ZIP · 100 MB · gratis</small></a>
+      <a class="boton" data-so="android" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download style="background:#c9ecff;border-color:#1d5f86;box-shadow:0 6px 0 #1d5f86;color:#123f5a">Descargar para Android<small>APK · 94 MB · gratis</small></a>
+      <a class="boton" data-so="windows" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Windows.zip" download style="background:#e3dbff;border-color:#4b3a8f;box-shadow:0 6px 0 #4b3a8f;color:#2c2160">Descargar para Windows<small>ZIP · 74 MB · gratis</small></a>
     </div>
-    <span class="aviso">Versión de prueba 0.46 · se irá actualizando</span>
+    <span class="aviso">Versión de prueba 0.47 · se irá actualizando</span>
     <div class="foto-grande"><img src="brotalia-web/pueblo.jpg" alt="Un pueblo de Brotalia con fábricas de colores, campos con la cosecha lista, una fuente y vecinos paseando" width="1280" height="720"></div>
   </div>
 </header>
@@ -114,7 +137,7 @@
 <section class="clara">
   <div class="ancho">
     <h2>¿Qué se hace en Brotalia?</h2>
-    <p class="intro">Un juego de granja y pueblo tranquilo y para todas las edades: construye y decora a tu gusto, con mar animado, cuatro estaciones y día y noche. Todo está dibujado para este juego.</p>
+    <p class="intro">Un juego de granja y pueblo tranquilo y para todas las edades: construye y decora a tu gusto, con mar animado, cuatro estaciones y día y noche. Edificios, vecinos y animales en 3D, con aspecto de juguete.</p>
     <div class="rejilla">
       <article class="tarjeta">
         <img src="brotalia-web/cosecha.jpg" alt="Campos con la cosecha lista y brillando" loading="lazy">
@@ -125,31 +148,31 @@
         <div><h3>Pon tus máquinas en marcha</h3><p>Panadería, quesería, telar, chocolatería, juguetería… Más de veinte fábricas, cada una con su máquina, que convierten lo que cosechas en productos.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/pedidos.jpg" alt="Tablón con los pedidos de los vecinos" loading="lazy">
+        <img src="brotalia-web/pedidos.jpg" alt="Los pedidos de los vecinos, cada uno con su cara" loading="lazy">
         <div><h3>Atiende a los vecinos</h3><p>Pedidos de los vecinos, un tren y un barco que llenar de mercancía, el mercadillo y pedidos relámpago que pagan el doble.</p></div>
       </article>
       <article class="tarjeta">
         <img src="brotalia-web/tropical.jpg" alt="La isla tropical con palmeras y playa" loading="lazy">
-        <div><h3>Tres islas <span class="nuevo">Nuevo</span></h3><p>Construye puentes para abrir una segunda isla y una isla tropical con palmeras, plátanos, cocos y su propio bar.</p></div>
+        <div><h3>Tres islas</h3><p>Construye puentes para abrir una segunda isla y una isla tropical con palmeras, plátanos, cocos y su propio bar.</p></div>
       </article>
       <article class="tarjeta">
         <img src="brotalia-web/mina.jpg" alt="Minijuego de la mina con rocas que picar" loading="lazy">
-        <div><h3>Excava en la mina <span class="nuevo">Nuevo</span></h3><p>Pica la roca casilla a casilla y encuentra hierro, plata, oro, rubíes y cofres. Con ellos haces espadas y escudos; con tintes, peluches y juguetes.</p></div>
+        <div><h3>Excava en la mina</h3><p>Pica la roca casilla a casilla y encuentra hierro, plata, oro, rubíes y cofres. Con ellos haces espadas y escudos; con tintes, peluches y juguetes.</p></div>
       </article>
       <article class="tarjeta">
         <img src="brotalia-web/personaje.jpg" alt="Pantalla para personalizar el personaje" loading="lazy">
-        <div><h3>Tu personaje <span class="nuevo">Nuevo</span></h3><p>Elige sombrero, color de ropa, espada, escudo y mascota. Tu granjero pasea por el pueblo y tus amigos lo ven al visitarte.</p></div>
+        <div><h3>Tu personaje</h3><p>Elige entre doce personajes, sombrero, espada, escudo y mascota. Tu granjero pasea por el pueblo y tus amigos lo ven al visitarte.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/torneo.jpg" alt="Justa a caballo entre dos caballeros en el torneo" loading="lazy">
-        <div><h3>Torneo de caballeros <span class="nuevo">Nuevo</span></h3><p>Construye el campo del torneo y compite en la justa a caballo y el tiro con arco. Tu espada y tu escudo te dan fuerza. Si pierdes, no pierdes nada.</p></div>
+        <img src="brotalia-web/animales.jpg" alt="Corrales con vacas, ovejas y gallinas" loading="lazy">
+        <div><h3>Animales y mascotas <span class="nuevo">Nuevo</span></h3><p>Vacas, ovejas y gallinas que pasean por sus corrales, y quince mascotas que te siguen por el pueblo: perro, gato, zorro, loro, elefante, león…</p></div>
       </article>
       <article class="tarjeta">
         <img src="brotalia-web/misiones.jpg" alt="Misiones del día con sus premios" loading="lazy">
-        <div><h3>Misiones y eventos</h3><p>Misiones cada día, logros, una ruleta gratis, una historia con capítulos, pesca en el muelle, un álbum para completar y un evento semanal.</p></div>
+        <div><h3>Misiones y eventos</h3><p>Misiones cada día, un regalo diario, logros, una ruleta gratis, una historia con capítulos, pesca en el muelle, un torneo de caballeros y un evento semanal.</p></div>
       </article>
       <article class="tarjeta">
-        <img src="brotalia-web/otono.jpg" alt="La segunda isla en otoño con sus fábricas" loading="lazy">
+        <img src="brotalia-web/tienda.jpg" alt="La tienda del juego" loading="lazy">
         <div><h3>Juega con tus amigos</h3><p>Visita sus pueblos, mándales regalos y montad una cooperativa. Invítalos con el nombre de tu pueblo y os lleváis gemas de regalo.</p></div>
       </article>
     </div>
@@ -157,6 +180,18 @@
 </section>
 
 <section>
+  <div class="ancho">
+    <h2>Lo último</h2>
+    <div class="novedades">
+      <div class="novedad"><b>🎨 Interfaz nueva</b><span>Ventanas con marco de madera, cintas de título y botones con relieve.</span></div>
+      <div class="novedad"><b>🐄 Animales de granja</b><span>Vacas, ovejas y gallinas con el mismo estilo que las mascotas, también dentro del establo.</span></div>
+      <div class="novedad"><b>🎁 Regalo diario</b><span>Siete días de premios, con un cofre del tesoro al final de la racha.</span></div>
+      <div class="novedad"><b>🔑 Entra con Google</b><span>O con tu correo, y sigue tu partida en cualquier aparato.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="clara">
   <div class="ancho">
     <h2>Cambia con las estaciones</h2>
     <div class="galeria">
@@ -173,15 +208,15 @@
     <ol class="pasos">
       <li>Pulsa <b>Descargar para Android</b> desde el móvil o la tablet.</li>
       <li>Abre el archivo <b>brotalia.apk</b> cuando termine de bajar. Si el móvil pregunta, permite instalar aplicaciones desde el navegador.</li>
-      <li>Abre Brotalia, dile a Lola cómo te llamas y sigue sus pasos. Para jugar con amigos, crea tu cuenta con el botón <b>Amigos</b>.</li>
+      <li>Abre Brotalia, entra con <b>Google</b> o con tu <b>correo</b> (o juega sin cuenta), dile a Lola cómo te llamas y sigue sus pasos.</li>
     </ol>
-    <p class="centro" style="margin-top:22px"><a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download>Descargar para Android<small>APK · 56 MB · gratis</small></a></p>
+    <p class="centro" style="margin-top:22px"><a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/brotalia.apk" download>Descargar para Android<small>APK · 94 MB · gratis</small></a></p>
     <h2 style="margin-top:40px">En iPhone, iPad y ordenador</h2>
     <ol class="pasos">
       <li>Pulsa <b>Jugar ahora</b>: el juego se abre en el navegador, sin instalar nada. La primera vez tarda un poco en cargar.</li>
       <li>En iPhone o iPad, ábrelo con <b>Safari</b>, pulsa <b>Compartir</b> y luego <b>Añadir a pantalla de inicio</b> para tenerlo como una app a pantalla completa.</li>
       <li>En Windows también puedes <b>descargar el juego</b>: descomprime el .zip y abre <b>Brotalia.exe</b>. Si Windows avisa, pulsa «Más información» y «Ejecutar de todas formas».</li>
-      <li>La partida se guarda en ese navegador. Crea tu cuenta con el botón <b>Amigos</b> para no perderla y seguirla en otro dispositivo.</li>
+      <li>Si entras con Google o con tu correo, la partida se guarda en la nube y puedes seguirla en otro dispositivo. Sin cuenta, se guarda solo en ese navegador.</li>
     </ol>
     <p class="centro" style="margin-top:22px"><a class="boton" href="jugar/">▶ Jugar ahora<small>en el navegador</small></a></p>
 
@@ -192,7 +227,7 @@
       <li><b>Si prefieres descargarlo:</b> pulsa <b>Descargar para Mac</b>, abre el .zip y arrastra <b>Brotalia</b> a Aplicaciones.</li>
       <li>La primera vez, el Mac avisará de que no conoce al desarrollador. Haz <b>clic derecho sobre Brotalia → Abrir → Abrir</b>. Si no te deja, ve a <b>Ajustes del Sistema → Privacidad y seguridad</b> y pulsa <b>Abrir igualmente</b>. Solo hay que hacerlo una vez.</li>
     </ol>
-    <p class="centro" style="margin-top:22px"><a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Mac.zip" download style="background:#ffe3c2;border-color:#8a4b12;box-shadow:0 6px 0 #8a4b12;color:#5a2f08">Descargar para Mac<small>ZIP · 63 MB · gratis</small></a></p>
+    <p class="centro" style="margin-top:22px"><a class="boton" href="https://github.com/davurpi/brotalia/releases/latest/download/Brotalia-Mac.zip" download style="background:#ffe3c2;border-color:#8a4b12;box-shadow:0 6px 0 #8a4b12;color:#5a2f08">Descargar para Mac<small>ZIP · 100 MB · gratis</small></a></p>
   </div>
 </section>
 
@@ -232,7 +267,7 @@
       Brotalia es un juego tranquilo de granja, sin violencia y sin anuncios.
       <ul>
         <li><b>Es gratis</b>, y se puede jugar entero sin pagar. Tiene compras opcionales (gemas, VIP de 30 días que no se renueva solo, pase), pagadas con tarjeta, con un límite de 60 € al mes por cuenta. Si un menor compra sin permiso, <a href="condiciones.html">escríbenos y lo devolvemos</a>.</li>
-        <li><b>La cuenta es opcional.</b> Solo hace falta para guardar la partida en la nube y jugar con amigos. Pide un nombre de pueblo y una contraseña, que se guarda protegida; no pide correo, teléfono ni datos personales.</li>
+        <li><b>La cuenta es opcional.</b> Solo hace falta para guardar la partida en la nube y jugar con amigos. Se entra con Google o con un correo y una contraseña (que se guarda protegida). No pide teléfono, dirección ni otros datos personales.</li>
         <li><b>Sin chat libre.</b> Entre jugadores solo se pueden visitar pueblos, dar «me gusta», mandar productos del juego, comprar en el mercado y, en las cooperativas, enviar frases ya escritas («¡Hola!», «¡Gracias!»...). Nadie puede escribir lo que quiera.</li>
         <li><b>Es una versión de prueba.</b> Puede tener fallos y la partida podría reiniciarse durante las pruebas.</li>
       </ul>
@@ -241,7 +276,7 @@
 </section>
 
 <footer>
-  <p>Brotalia es un juego de <b>Àlex Juegos</b>. Todo el dibujo y la música están hechos para este juego.</p>
+  <p>Brotalia es un juego de <b>Àlex Juegos</b>. Modelos 3D de KayKit, Kenney y Quaternius (licencia libre CC0) y letra Fredoka (licencia SIL OFL).</p>
   <p>Más juegos: <a href="https://fenix.alexjuegos.com/">Fénix FC</a> · <a href="https://davurpi.github.io/la-odisea/">La Odisea</a></p>
   <p><a href="privacidad.html">Privacidad</a> · <a href="condiciones.html">Condiciones y compras</a> · <a href="mailto:info@synkiria.com">Contacto</a></p>
 </footer>

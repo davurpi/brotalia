@@ -97,6 +97,15 @@ body {
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Brotalia">
+<style>
+#status { background: linear-gradient(#4da8d9 0%, #8fd0ee 58%, #7ccf4a 58%, #5cb34c 100%); }
+#status-splash { max-width: min(420px, 70vw); max-height: 60vh; filter: drop-shadow(0 10px 0 rgba(40, 90, 30, .35)); }
+#status-progress { bottom: 13%; width: min(440px, 72vw); height: 26px; border: 5px solid #6b4521; border-radius: 16px; background: #fff5d6; overflow: hidden; -webkit-appearance: none; appearance: none; box-shadow: 0 6px 0 rgba(60, 35, 10, .35); }
+#status-progress::-webkit-progress-bar { background: #fff5d6; }
+#status-progress::-webkit-progress-value { background: linear-gradient(#b9ec86, #5cb34c); }
+#status-progress::-moz-progress-bar { background: linear-gradient(#b9ec86, #5cb34c); }
+#status::after { content: 'Cargando tu pueblo...'; position: absolute; bottom: calc(13% - 52px); left: 0; right: 0; text-align: center; color: #fff; font: bold 22px 'Trebuchet MS', Verdana, sans-serif; text-shadow: 0 2px 0 #296b24; }
+</style>
 <script>
 (function () {
   try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
@@ -134,7 +143,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":38017848,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":39200304,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
