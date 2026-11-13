@@ -97,6 +97,38 @@ body {
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Brotalia">
+<script>
+/* ANUNCIOS CON PREMIO (Google H5 Games Ads). Pon tu número de AdSense en BROTALIA_ADS (ca-pub-...);
+   mientras esté vacío no se carga nada de Google y el botón de vídeo no sale en el juego. */
+window.BROTALIA_ADS = '';
+(function () {
+  if (!window.BROTALIA_ADS) return;
+  window.adsbygoogle = window.adsbygoogle || [];
+  window.adBreak = window.adConfig = function (o) { window.adsbygoogle.push(o); };
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + window.BROTALIA_ADS;
+  s.setAttribute('data-ad-client', window.BROTALIA_ADS);
+  s.setAttribute('data-ad-frequency-hint', '30s');
+  s.setAttribute('data-tag-for-child-directed-treatment', '1');
+  s.crossOrigin = 'anonymous';
+  document.head.appendChild(s);
+  window.adsbygoogle.requestNonPersonalizedAds = 1;
+  window.adConfig({ preloadAdBreaks: 'on', sound: 'on' });
+  window.brotaliaAnuncio = function (vuelta) {
+    var hecho = false;
+    function fin(r) { if (!hecho) { hecho = true; vuelta(r); } }
+    window.adBreak({
+      type: 'reward', name: 'gemas',
+      beforeReward: function (enseñar) { enseñar(); },
+      adDismissed: function () { fin('no'); },
+      adViewed: function () { fin('si'); },
+      adBreakDone: function (info) { if (info.breakStatus !== 'viewed') fin('no'); }
+    });
+    setTimeout(function () { fin('no'); }, 90000);
+  };
+})();
+</script>
 <style>
 #status { background: linear-gradient(#4da8d9 0%, #8fd0ee 58%, #7ccf4a 58%, #5cb34c 100%); }
 #status-splash { max-width: min(420px, 70vw); max-height: 60vh; filter: drop-shadow(0 10px 0 rgba(40, 90, 30, .35)); }
@@ -143,7 +175,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":35598624,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":false,"executable":"index","experimentalVK":true,"fileSizes":{"index.pck":35601736,"index.wasm":37695054},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4,"serviceWorker":"index.service.worker.js"};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
