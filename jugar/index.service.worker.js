@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1794579265|15397804';
+const CACHE_VERSION = '1794580039|15924939';
 /** @type {string} */
 const CACHE_PREFIX = 'Brotalia-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
