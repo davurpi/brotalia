@@ -59,38 +59,71 @@
   {
    "red": "youtube",
    "fecha": "2026-11-21T19:00:00+01:00",
-   "titulo": "Día 1 vs día 30 😱 (en producción)",
+   "titulo": "Mi pueblo el DÍA 1 vs el DÍA 30",
+   "url": "https://youtube.com/shorts/IJPvadujiS8",
    "voz": "mujer",
    "video": "10"
   },
   {
    "red": "youtube",
    "fecha": "2026-11-22T19:00:00+01:00",
-   "titulo": "¿Cómo se llama tu pueblo? 👇 (en producción)",
+   "titulo": "Dime cómo se llama tu pueblo…",
+   "url": "https://youtube.com/shorts/phzBUmzkeZA",
    "voz": "chico",
    "video": "11"
   },
   {
    "red": "youtube",
    "fecha": "2026-11-23T19:00:00+01:00",
-   "titulo": "Si te gustan los juegos de granja… (en producción)",
+   "titulo": "Si te gustan los juegos de granja…",
+   "url": "https://youtube.com/shorts/L9oc8bD1KLc",
    "voz": "chico (humana)",
    "video": "12"
   },
   {
    "red": "youtube",
    "fecha": "2026-11-24T19:00:00+01:00",
-   "titulo": "Ponle sonido 🔊 puro placer (en producción)",
+   "titulo": "Ponle sonido: PURO PLACER",
+   "url": "https://youtube.com/shorts/-ThnCnnR8mg",
    "voz": "chica",
    "video": "13"
   },
   {
    "red": "youtube",
    "fecha": "2026-11-25T19:00:00+01:00",
-   "titulo": "Solo el 1% acierta 🤔 (en producción)",
+   "titulo": "Solo el 1% acierta",
+   "url": "https://youtube.com/shorts/kANhU1TJTMs",
    "voz": "mujer",
    "video": "14"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-11-26T19:00:00+01:00",
+   "titulo": "Mi pueblo ahora tiene NIEVE (en producción)",
+   "voz": "chica",
+   "video": "15"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-11-27T19:00:00+01:00",
+   "titulo": "¿Un juego de granja con BALLENAS? (en producción)",
+   "voz": "chico",
+   "video": "16"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-11-28T19:00:00+01:00",
+   "titulo": "Me construí un CASTILLO (en producción)",
+   "voz": "chico (humana)",
+   "video": "17"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-11-29T12:00:00+01:00",
+   "titulo": "VÍDEO LARGO: Guía Brotalia, 10 trucos para crecer rápido (en producción)",
+   "voz": "chico (humana)",
+   "video": "largo1"
   }
  ],
- "actualizado": "2026-11-13T22:27:51+01:00"
+ "actualizado": "2026-11-15T21:54:40+01:00"
 }
