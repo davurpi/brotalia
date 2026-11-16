@@ -130,6 +130,62 @@
   },
   {
    "red": "youtube",
+   "fecha": "2026-11-29T19:00:00+01:00",
+   "titulo": "¿Primavera 🌸 u otoño 🍂? Elige rápido",
+   "url": "https://youtube.com/shorts/3yraAQmgZh0",
+   "voz": "chica",
+   "video": "18"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-11-30T19:00:00+01:00",
+   "titulo": "El viajero 🧳 que pasa UNA vez al día",
+   "url": "https://youtube.com/shorts/9X1ir9b47xw",
+   "voz": "chico",
+   "video": "19"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-12-01T19:00:00+01:00",
+   "titulo": "El ERROR ❌ que hace todo el mundo al empezar",
+   "url": "https://youtube.com/shorts/Z-PwJnCXESY",
+   "voz": "mujer",
+   "video": "20"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-12-02T19:00:00+01:00",
+   "titulo": "¿Pescar 🎣 en un juego de GRANJA?",
+   "url": "https://youtube.com/shorts/55EtsFXArb0",
+   "voz": "chico (humana)",
+   "video": "21"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-12-03T19:00:00+01:00",
+   "titulo": "Mis vecinos tienen VIDA PROPIA 👀",
+   "url": "https://youtube.com/shorts/0HHZ9SRHtpM",
+   "voz": "chica",
+   "video": "22"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-12-04T19:00:00+01:00",
+   "titulo": "Haz ESTO antes de dormir 😴",
+   "url": "https://youtube.com/shorts/5phX5YfkdpE",
+   "voz": "chico",
+   "video": "23"
+  },
+  {
+   "red": "youtube",
+   "fecha": "2026-12-05T19:00:00+01:00",
+   "titulo": "Gemas GRATIS 💎 cada día (sin pagar)",
+   "url": "https://youtube.com/shorts/M_BGq1er9Qw",
+   "voz": "mujer",
+   "video": "24"
+  },
+  {
+   "red": "youtube",
    "fecha": "2026-12-06T12:00:00+01:00",
    "titulo": "VÍDEO LARGO: 12 COSAS que NO sabías de Brotalia",
    "url": "https://youtube.com/watch?v=E34cIYxI5Es",
@@ -137,5 +193,5 @@
    "video": "largo2"
   }
  ],
- "actualizado": "2026-11-16T14:53:09+01:00"
+ "actualizado": "2026-11-16T23:27:27+01:00"
 }
