@@ -106,14 +106,16 @@
   {
    "red": "youtube",
    "fecha": "2026-11-27T19:00:00+01:00",
-   "titulo": "¿Un juego de granja con BALLENAS? (en producción)",
+   "titulo": "¿Un juego de granja con BALLENAS?",
+   "url": "https://youtube.com/shorts/eeRS6_N5wSM",
    "voz": "chico",
    "video": "16"
   },
   {
    "red": "youtube",
    "fecha": "2026-11-28T19:00:00+01:00",
-   "titulo": "Me construí un CASTILLO (en producción)",
+   "titulo": "Me construí un CASTILLO",
+   "url": "https://youtube.com/shorts/pR8v_a34MQw",
    "voz": "chico (humana)",
    "video": "17"
   },
@@ -125,5 +127,5 @@
    "video": "largo1"
   }
  ],
- "actualizado": "2026-11-15T21:54:40+01:00"
+ "actualizado": "2026-11-16T01:09:57+01:00"
 }
